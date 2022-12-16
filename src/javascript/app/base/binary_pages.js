@@ -70,6 +70,7 @@ const StaticPages         = require('../../static/pages/static_pages');
 const TermsAndConditions  = require('../../static/pages/tnc');
 const WhyUs               = require('../../static/pages/why_us');
 const AffiliatesIBLanding = require('../../static/pages/affiliate_ib_landing');
+const PartnersLanding     = require('../../static/pages/partners_landing');
 const ResponsibleTrading  = require('../../static/pages/responsible_trading');
 
 /* eslint-disable max-len */
@@ -146,6 +147,7 @@ const pages_config = {
     withdrawws               : { module: PaymentAgentWithdraw,       is_authenticated: true, only_real: true },
 
     'affiliate-ib'           : { module: AffiliatesIBLanding },
+    'partners'               : { module: PartnersLanding },
     'binary-in-numbers'      : { module: StaticPages.BinaryInNumbers },
     'binary-options'         : { module: GetStarted.BinaryOptions },
     // 'contact-2'              : { module: Contact2 },
