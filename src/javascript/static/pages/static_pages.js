@@ -6,6 +6,12 @@ const handleHash   = require('../../_common/utility').handleHash;
 const BinaryPjax   = require('../../app/base/binary_pjax');
 const Client       = require('../../app/base/client');
 const Header       = require('../../app/base/header');
+const getLanguage  = require('../../_common/language.js').get;
+
+const current_language = getLanguage().toLowerCase().replace(/_/g, '-');
+const redirectToDeriv = () => () => {
+    if (current_language === 'en') {window.location.replace('https://deriv.com/partners');} else {window.location.replace(`https://deriv.com/${current_language}/partners`);}
+};
 
 module.exports = {
     OpenPositions: {
@@ -19,7 +25,15 @@ module.exports = {
         onUnload: () => { ImageSlider.onUnMount(); },
     },
     OpenSourceProjects: {
-        onLoad  : () => { Scroll.sidebarScroll($('.open-source-projects')); },
+        onLoad  : redirectToDeriv(),
+        onUnload: () => { Scroll.offScroll(); },
+    },
+    Partners: {
+        onLoad  : redirectToDeriv(),
+        onUnload: () => { Scroll.offScroll(); },
+    },
+    SecurityTesting: {
+        onLoad  : redirectToDeriv(),
         onUnload: () => { Scroll.offScroll(); },
     },
     PaymentAgent: {
